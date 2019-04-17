@@ -10,25 +10,15 @@ namespace Snake
     {
         static void Main(string[] args)
         {
-            Point p1 = new Point(1, 1, '*');
+            //Point p1 = new Point(1, 1, '*');
 
-            //p1.Draw();
+            //Point p2 = new Point(1, 2, '*');
 
-            Point p2 = new Point(1, 2, '*');
+            HorLn line = new HorLn(3, 9, 5, '_');
+            line.Draw();
 
-            //p2.Draw(); ;
-
-            Point p3 = new Point(1, 3, '*');
-
-            List<Point> pList = new List<Point>();
-            pList.Add(p1);
-            pList.Add(p2);
-            pList.Add(p3);
-
-            foreach (var item in pList)
-            {
-                item.Draw();
-            }
+            VertLn line2 = new VertLn(6, 10, 6, '|');
+            line2.Draw();
 
             Console.ReadKey();
         }
