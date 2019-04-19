@@ -16,11 +16,11 @@ namespace Snake
         {
         }
 
-        public Point(int _x, int _y, char _sym)
+        public Point(int x, int y, char sym)
         {
-            x = _x;
-            y = _y;
-            sym = _sym;
+            this.x = x;
+            this.y = y;
+            this.sym = sym;
         }
 
         public Point(Point p)
@@ -60,6 +60,11 @@ namespace Snake
         {
             sym = ' ';
             Draw();
+        }
+
+        public bool IsHit(Point p)
+        {
+            return p.x == this.x && p.y == this.y;
         }
     }
 }

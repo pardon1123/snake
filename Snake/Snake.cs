@@ -9,9 +9,9 @@ namespace Snake
     class Snake : Line
     {
         Direction direction;
-        public Snake(Point tail, int length, Direction _direction)
+        public Snake(Point tail, int length, Direction direction)
         {
-            direction = _direction;
+            this.direction = direction;
             pList = new List<Point>();
 
             for (int i = 0; i < length; i++)
@@ -44,21 +44,26 @@ namespace Snake
         public void HandleKey(ConsoleKey key)
         {
             if (key == ConsoleKey.LeftArrow)
-            {
                 direction = Direction.LEFT;
-            }
             else if (key == ConsoleKey.RightArrow)
-            {
                 direction = Direction.RIGHT;
-            }
             else if (key == ConsoleKey.UpArrow)
-            {
                 direction = Direction.UP;
-            }
             else if (key == ConsoleKey.DownArrow)
-            {
                 direction = Direction.DOWN;
+        }
+
+        internal bool Eat(Point food)
+        {
+            Point head = GetNextPoint();
+            if (head.IsHit(food))
+            {
+                food.sym = head.sym;
+                pList.Add(food);
+                return true;
             }
+            else
+                return false;
         }
     }
 }
