@@ -11,10 +11,10 @@ namespace Snake
     {
         static void Main(string[] args)
         {
-            //Console.SetBufferSize(80, 25);
+            Score score = new Score();
 
             //Рамка
-            Walls walls = new Walls(80,25);
+            Walls walls = new Walls(80, 25);
             walls.Draw();
 
             Point p = new Point(4, 5, '*');
@@ -32,6 +32,7 @@ namespace Snake
 
                 if (snake.Eat(food))
                 {
+                    score.Plus();
                     food = foodCreator.CreateFood();
                     food.Draw();
                 }
@@ -48,6 +49,10 @@ namespace Snake
                     snake.HandleKey(key.Key);
                 }
             }
+            Console.SetCursorPosition(25, 12);
+            Console.Write($"ЛОХ ПИДР!! набрал всего {score.Show()} очков");
+
+            Console.ReadKey();
         }
     }
 }
